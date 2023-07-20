@@ -1,7 +1,7 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+
 const axios = require('axios');
+const app = express();
 
 
 
@@ -23,8 +23,7 @@ app.get('/', (req, res) => {
 //webhook URL
 app.post('/form-submit', (req, res) => {
     axios.post('https://hooks.slack.com/services/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', 
-    {text: `Nombre: ${req.body.name}, Email: ${req.body.email}`,
-
+    {text: `Name: ${req.body.name}, Email: ${req.body.email}`,
 
 }).then(() =>{
     res.send('Formulario completado con exito')
@@ -35,11 +34,9 @@ app.post('/form-submit', (req, res) => {
 })
 
 //localhost
-app.listen(port, () => {
-    console.log(`Escuchando app en el port ${port}`);
+app.listen(3002, () => {
+    console.log('Escuchando app en el port');
 })
-
-
 
 
 //La aplicación inicia un servidor y escucha las conexiones en el puerto 3000. La aplicación responde con “Hello World!” para las solicitudes al URL raíz (/) o a la ruta raíz. Para cada vía de acceso diferente, responderá con un error 404 Not Found.
